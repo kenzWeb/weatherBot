@@ -1,6 +1,6 @@
 import {translate} from '@vitalets/google-translate-api'
 import {Context} from 'grammy'
-import { GetBigWeather } from '../utils/bigWeatherScrapper'
+import {GetBigWeather} from '../utils/bigWeatherScrapper'
 
 type WeatherData = {
 	ctx: Context
@@ -36,7 +36,10 @@ const formatWeatherMessage = (
 			temperatureValue,
 		)} ${temp}${degreeSymbol} - ${condition.trim()}\n`
 	})
-	return message + `\n✨ Приятного дня!`
+	return (
+		message +
+		`\n🌐 Ссылка на более подробную информацию: https://pogoda.mail.ru/prognoz/${city}/7dney`
+	)
 }
 
 export const BigWeather = async ({ctx, city, isFahrenheit}: WeatherData) => {
